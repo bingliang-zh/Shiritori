@@ -147,14 +147,16 @@ class DictionaryTree {
 const wordFilter = (word: Word): boolean => {
     // filter nouns
     // https://www.romajidesu.com/content/dictionary_code.html
-    const types = word[3].split(",");
-    return types.includes("n")
+    const [, kana, kanji, typeStr] = word;
+    const types = typeStr.split(",");
+    return (types.includes("n")
         || types.includes("adj-na")
         || types.includes("n-p")
         || types.includes("n-adv")
         || types.includes("adj-no")
         || types.includes("n-t")
-        || types.includes("adj-f");
+        || types.includes("adj-f")
+        ) && kana[kana.length - 1] !== 'ん';
 };
 
 const buildDictionary = (words: Word[]): DictionaryTree => {

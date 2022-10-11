@@ -88,6 +88,7 @@ function App() {
         dictionaryTree?.find(matchedWord, true);
         // add to used words
         setUsedWords(words => [...words, matchedWord]);
+        const response = aiResponse(dictionaryTree, )
         // get a random word with rules
         const reply = dictionaryTree?.getRandomWord(getPossibleHeads(matchedWord[1]), true);
         if (!reply) {
